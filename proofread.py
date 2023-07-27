@@ -18,12 +18,12 @@ while True:
 	latidx = random.randint(0,179)
 	lonidx = random.randint(0,359)
 	var = random.choice(['Cant', 'NO3', 'OmegaA', 'OmegaC', 'oxygen', 'pHts25p0', 'pHtsinsitutp', 'PI_TCO2', 'PO4', 'salinity', 'silicate', 'TAlk', 'TCO2', 'temperature'])
-	ds = xr.open_dataset('/tmp/glodap/GLODAPv2.2016b.'+var+'.nc')
+	ds = xr.open_dataset('/bulk/glodap/GLODAPv2.2016b.'+var+'.nc')
 	element = random.choice([var, var+'_error', 'Input_mean', 'Input_std', 'Input_N', var+'_relerr'])
 	renamed_element = element
 	if not renamed_element.startswith(var):
 		renamed_element = var + '_' + renamed_element
-	print('checking', latidx, lonidx, element)
+	print('checking', latidx, lonidx, renamed_element)
 
 	# original data from netcdf
 	column = ds[element][:,latidx,lonidx].to_dict()['data']

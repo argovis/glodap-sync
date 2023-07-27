@@ -76,7 +76,7 @@ if sys.argv[1] == 'meta':
 		'lattice': []
 	}
 	for var in glodapvars:
-		ds = xr.open_dataset('/tmp/glodap/GLODAPv2.2016b.'+var+'.nc')
+		ds = xr.open_dataset('/bulk/glodap/GLODAPv2.2016b.'+var+'.nc')
 		metadata['snr'][var] = ds['SnR'][0].to_dict()['data']
 		metadata['cl'][var] = ds['CL'][0].to_dict()['data']
 		# each file has a measurement, error, input mean, input std, input n and relative error
@@ -97,7 +97,7 @@ if sys.argv[1] == 'meta':
 else:
 	# data construction
 	data = []
-	ds = xr.open_dataset('/tmp/glodap/GLODAPv2.2016b.Cant.nc')
+	ds = xr.open_dataset('/bulk/glodap/GLODAPv2.2016b.Cant.nc')
 	for lonidx in range(360):
 		data.append([])
 		for latidx in range(180):
@@ -105,7 +105,7 @@ else:
 			lat = float(ds['lat'][latidx].data)
 			data[lonidx].append({
 				'_id': str(lon)+'_'+str(lat),
-				'metadata': 'glodapv2.2016b',
+				'metadata': ['glodapv2.2016b'],
 				'geolocation': {"type":"Point", "coordinates":[lon,lat]},
 				'basin': find_basin(basins, lon, lat),
 				'timestamp': datetime.datetime(year=1, month=1, day=1),
@@ -118,7 +118,7 @@ else:
 
 	for var in glodapvars:
 		print('var extraction', var)
-		ds = xr.open_dataset('/tmp/glodap/GLODAPv2.2016b.'+var+'.nc')
+		ds = xr.open_dataset('/bulk/glodap/GLODAPv2.2016b.'+var+'.nc')
 		elements = [var, var+'_error', 'Input_mean', 'Input_std', 'Input_N', var+'_relerr']
 		for lonidx in range(start_lonidx, end_lonidx):
 			print('longitude idx', lonidx)
