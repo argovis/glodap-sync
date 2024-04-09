@@ -109,7 +109,7 @@ else:
 				'metadata': ['glodapv2.2016b'],
 				'geolocation': {"type":"Point", "coordinates":[lon,lat]},
 				'basin': find_basin(basins, lon, lat),
-				'timestamp': datetime.datetime(year=1, month=1, day=1),
+				'timestamp': datetime.datetime(year=1000, month=1, day=1),
 				'data': []
 			})
 
