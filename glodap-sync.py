@@ -68,7 +68,21 @@ if sys.argv[1] == 'meta':
 			[]
 		],
 		'snr': {},
-		'cl': {}
+		'cl': {},
+		'lattice': {
+			"center" : [
+				0.5,
+				0.5
+			],
+			"spacing" : [
+				1,
+				1
+			],
+			"minLat" : -77.5,	# double check on update
+			"minLon" : -179.5,
+			"maxLat" : 89.5,
+			"maxLon" : 179.5
+		}
 	}
 
 	summary = {
