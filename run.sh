@@ -11,3 +11,4 @@ python glodap-sync.py 270 300
 python glodap-sync.py 300 330
 python glodap-sync.py 330 360
 python glodap-sync.py meta
+python compute-summaries.py 
